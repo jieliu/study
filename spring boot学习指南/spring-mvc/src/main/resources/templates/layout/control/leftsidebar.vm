@@ -1,0 +1,185 @@
+<ul class="page-sidebar-menu">
+	<li>
+		<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+		<div class="sidebar-toggler hidden-phone"></div>
+		<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+	</li>
+
+	<!-- BEGIN 集群管理　-->
+	<li class="start">
+		<a href="/support/cluster">
+			<i class="icon-home"></i>
+			<span class="title">集群管理</span>
+			<span class="selected"></span>
+		</a>
+	</li>
+	<!-- END 集群管理 -->
+
+	<!-- BEGIN 运营维护
+	<li class="">
+		<a href="javascript:;">
+			<i class="icon-cogs"></i>
+			<span class="title">运营维护</span>
+			<span class="arrow "></span>
+		</a>
+
+		<ul class="sub-menu">
+			<li >
+				<a href="#">集群管理</a>
+			</li>
+			<li >
+				<a href="#">应用管理</a>
+			</li>
+			<li >
+				<a href="#">镜像管理</a>
+			</li>
+			<li >
+				<a href="#">日志查询</a>
+			</li>
+            <li>
+                <a href="#">消息中心</a>
+            </li>
+		</ul>
+	</li>
+	END 运营维护　-->
+
+	<!-- BEGIN 应用开发　
+	<li class="">
+		<a href="javascript:;">
+			<i class="icon-cogs"></i>
+			<span class="title">应用开发</span>
+			<span class="arrow "></span>
+		</a>
+
+		<ul class="sub-menu">
+            <li >
+                <a target="_blank" href="http://192.168.1.120:8080">应用托管</a>
+            </li>
+            <li>
+                <a href="#">数据存储</a>
+            </li>
+			<li >
+            	<a target="_blank" href="http://192.168.1.119:8991">配置中心</a>
+            </li>
+            <li>
+                <a target="_blank" href="http://192.168.1.119:15672">消息队列</a>
+            </li>
+            <li>
+                <a href="#">日志管理</a>
+            </li>
+		</ul>
+	</li>
+	END 应用开发　-->
+
+	<!-- BEGIN 数据中心　
+	<li class="">
+		<a href="javascript:;">
+			<i class="icon-cogs"></i>
+			<span class="title">数据中心</span>
+			<span class="arrow "></span>
+		</a>
+
+		<ul class="sub-menu">
+			<li >
+				<a href="#">网络文件系统</a>
+			</li>
+
+			<li >
+				<a href="#">MySQL集群</a>
+			</li>
+
+			<li >
+				<a href="#">Redis集群</a>
+			</li>
+
+			<li >
+				<a href="#">HDFS系统</a>
+			</li>
+		</ul>
+	</li>
+	END 数据中心　-->
+
+
+
+	<!-- BEGIN API　Framework　-->
+	<li class="">
+		<a href="/support/apps/list/FreeSwitch/Begginer">
+			<i class="icon-cogs"></i>
+			<span class="title">服务管理</span>
+		</a>
+	</li>
+	<!-- END API Framework　-->
+
+    <!-- BEGIN 系统消息　-->
+    <li class="">
+        <a href="javascript:;">
+            <i class="icon-warning-sign"></i>
+            <span class="title">系统消息</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu">
+            <li >
+                <a href="/notification/all">全部消息</a>
+            </li>
+            <li >
+                <a href="/notification/unread">未读消息</a>
+            </li>
+            <li >
+                <a href="/notification/read">已读消息</a>
+            </li>
+        </ul>
+    </li>
+    <!-- END 系统消息　-->
+
+    <!-- BEGIN 协作消息　-->
+    <li class="">
+        <a href="javascript:;">
+            <i class="icon-envelope"></i>
+            <span class="title">协作消息</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu">
+            <li >
+                <a href="/message/all">全部消息</a>
+            </li>
+            <li >
+                <a href="/message/unread">未读消息</a>
+            </li>
+            <li >
+                <a href="/message/read">已读消息</a>
+            </li>
+        </ul>
+    </li>
+    <!-- END 协作消息　-->
+
+    <!-- BEGIN 集群管理　-->
+    <li class="">
+        <a href="system">
+            <i class="icon-tasks"></i>
+            <span class="title">任务列表</span>
+            <span class="selected"></span>
+        </a>
+    </li>
+    <!-- END 集群管理 -->
+
+	<!-- BEGIN 用户中心　-->
+    <li class="last">
+    	<a href="javascript:;">
+    		<i class="icon-cogs"></i>
+   			<span class="title">用户中心</span>
+   			<span class="arrow "></span>
+   		</a>
+   		<ul class="sub-menu">
+   			<li >
+   				<a href="#">信息管理</a>
+   			</li>
+
+   			<li >
+   				<a href="#">服务申请</a>
+   			</li>
+   	    </ul>
+    </li>
+	<!-- END 用户中心　-->
+
+
+</ul>

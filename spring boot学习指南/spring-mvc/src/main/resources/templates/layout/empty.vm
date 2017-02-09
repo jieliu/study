@@ -1,0 +1,6 @@
+<!-- BEGIN THIS IS AN EMPTY LAYOUT -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    $screen_content
+</div>
+<!-- END THIS IS AN EMPTY LAYOUT -->

@@ -1,0 +1,50 @@
+﻿需要的工具 dot : yum install graphviz
+
+编译的时候加上 -pg选项 连接库中也加上-pg选项
+example:
+    g++ -pg test.c 
+	gprof a.out gmon.out >> test.txt
+
+	生成图片：
+
+    执行代码生成gmon.out
+ 
+    执行命令产生gmon.out文件
+    ./a.out
+    gmon.out
+ 
+    如果gprof ./uniqueCoreDump有：
+    gmon.out file is missing call-graph data 
+    则表示没有正确的编译选项或者只有一个main函数
+ 
+    生成图片
+   gprof a.out  | ./gprof2dot.py -n0 -e0 | dot -Tpng -o output.png 
+  sz  output.png 
+   python gprof2dot.py call.txt | dot -Tpng -o prof.png 
+
+
+man gprof
+
+gprof [可执行文件] [gmon.out文件] [其它参数]
+
+方括号中的内容可以省略。如果省略了“可执行文件”，gprof会在当前目录下搜索a.out文件作为可执行文件，而如果省略了gmon.out文件，gprof也会在当前目录下寻找 gmon.out。其它参数可以控制gprof输出内容的格式等信息。最常用的参数如下：
+
+ -b 不再输出统计图表中每个字段的详细描述。
+
+ -p 只输出函数的调用图（Call graph的那部分信息）。
+
+ -q 只输出函数的时间消耗列表。
+
+ -e Name 不再输出函数Name 及其子函数的调用图（除非它们有未被限制的其它父函数）。可以给定多个 -e 标志。一个 -e 标志只能指定一个函数。
+
+ -E Name 不再输出函数Name 及其子函数的调用图，此标志类似于 -e 标志，但它在总时间和百分比时间的计算中排除了由函数Name 及其子函数所用的时间。
+
+ -f Name 输出函数Name 及其子函数的调用图。可以指定多个 -f 标志。一个 -f 标志只能指定一个函数。
+
+l -F Name 输出函数Name 及其子函数的调用图，它类似于 -f 标志，但它在总时间和百分比时间计算中仅使用所打印的例程的时间。可以指定多个 -F 标志。一个 -F 标志只能指定一个函数。-F 标志覆盖 -E 标志。
+
+l -z 显示使用次数为零的例程（按照调用计数和累积时间计算）。
+
+不过,gprof不能显示对象之间的继承关系,这也是它的弱点.
+
+Gprof对多线程支持不好，因为gprof用ITIMER_PROF信号，而只有主线程才能处理这个信号。
