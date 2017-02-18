@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egoo.ServiceInfo">
+
+    <select id="getInfoByIds" parameterType="java.util.Map" resultType="egoo.domain.oauthclient.ServiceInfo">
+        select * from agent_service_info_tb where tennatid=#{tenantid} and agentid=#{agentid};
+    </select>
+
+    <insert id="insertinfo" parameterType="java.util.Map">
+        insert into agent_service_info_tb(tennatid, agentid, agent_level, service_num, total_opinion_num, high_opinion_num, opinion_label) values(#{tenantid},#{agentid},#{agent_level},#{service_num},#{total_opinion_num},#{high_opinion_num},#{opinion_label});
+    </insert>
+
+    <update id="updateinfo" parameterType="java.util.Map">
+        update agent_service_info_tb set service_num=#{service_num},total_opinion_num=#{total_opinion_num},high_opinion_num=#{high_opinion_num},opinion_label=#{opinion_label} where tennatid=#{tenantid} and agentid=#{agentid};
+    </update>
+
+    <select id="getworkorderAT" parameterType="java.util.Map" resultType="egoo.domain.oauthclient.WorkOrder">
+        select * from work_order_tb where agentid=#{agentid} and tenantid=#{tenantid};
+    </select>
+
+    <select id="getworkorderUT" parameterType="java.util.Map" resultType="egoo.domain.oauthclient.WorkOrder">
+        select * from work_order_tb where userid=#{userid} and tenantid=#{tenantid};
+    </select>
+
+    <insert id="postworkorder" parameterType="java.util.Map" >
+        insert into work_order_tb(userid,agentid,tenantid,time,remark,label)values(#{userid},#{agentid},#{tenantid},#{time},#{remark},#{label});
+    </insert>
+
+    <select id="getDNforuser" parameterType="java.lang.String" resultType="egoo.domain.oauthclient.DN">
+
+    </select>
+
+    <insert id="putDNforUser" parameterType="java.util.Map">
+
+    </insert>
+
+
+</mapper>

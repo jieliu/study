@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tianma</groupId>
+    <artifactId>spring-boot</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>spring-mvc</module>
+        <module>spring-basic</module>
+        <module>spring-rpc-client</module>
+        <module>spring-rpc-server</module>
+        <module>spring-cloud</module>
+        <module>spring-data</module>
+        <module>spring-api-gateway</module>
+        <module>network-client</module>
+        <module>common-basic</module>
+        <module>spring-rest</module>
+    </modules>
+
+
+</project>

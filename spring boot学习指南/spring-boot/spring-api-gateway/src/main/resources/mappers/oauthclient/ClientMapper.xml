@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egoo.ClientMapper">
+
+    <resultMap type="egoo.domain.oauthclient.Approval" id="BaseResultMap">
+        <!-- column:库表的字段名 property:实体类里的属性名 -->
+        <id column="clientId" property="clientId" />
+        <result column="resource_ids" property="resourceId" />
+        <result column="scope" property="scopesOf" />
+        <result column="status" property="status" />
+        <result column="expiresAt" property="expire" javaType="java.sql.Timestamp" />
+    </resultMap>
+
+    <resultMap type="egoo.domain.oauthclient.Approval" id="APIResultMap">
+        <!-- column:库表的字段名 property:实体类里的属性名 -->
+        <id column="clientId" property="clientId" />
+        <result column="scope" property="scopesOf" />
+    </resultMap>
+
+    <select id="allClientInvoke" resultType="egoo.domain.oauthclient.Client">
+        select * from oauth_client_details;
+    </select>
+
+    <select id="selectClientById" parameterType="java.lang.String" resultType="egoo.domain.oauthclient.Client">
+        select * from oauth_client_details where client_id=#{id};<!--//??-->
+    </select>
+
+    <select id="selectClientByIdAndSecret" parameterType="java.util.Map" resultType="egoo.domain.oauthclient.Client">
+        select * from oauth_client_details where client_id=#{id} and client_secret=#{secret};<!--//??-->
+    </select>
+
+    <select id="selectResourcesByUser" parameterType="java.lang.String" resultType="java.lang.String">
+        select resource_ids from oauth_client_details where client_Id=#{clientId};<!--//??-->
+    </select>
+
+    <select id="selectAuthInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select oauth_approvals.expiresAt,oauth_approvals.clientId,oauth_approvals.scope,oauth_approvals.status,oauth_client_details.resource_ids from oauth_approvals,oauth_client_details where oauth_approvals.clientId=#{clientId} and oauth_approvals.status='APPROVED' and oauth_approvals.clientId=oauth_client_details.client_id;
+    </select>
+
+    <select id="selectClientforSingleapi" parameterType="java.lang.String" resultMap="APIResultMap">
+        select oauth_approvals.clientId,oauth_approvals.scope from oauth_approvals,oauth_client_details where oauth_approvals.status='APPROVED' and oauth_approvals.clientId=oauth_client_details.client_id and oauth_client_details.resource_ids LIKE CONCAT(CONCAT('%', #{apiName}), '%');
+    </select>
+
+    <insert id="savecodebyclient" parameterType="java.util.Map">
+        insert into clientcode(client_id,code) values(#{name},#{code});
+    </insert>
+
+    <select id="selectcode" parameterType="java.lang.String" resultType="java.lang.String">
+        select clientcode.code from clientcode where code=#{code};
+    </select>
+
+    <select id="selectcodebyclientandsecret" parameterType="java.lang.String" resultType="java.lang.String">
+        select clientcode.code from clientcode where client_id=#{client_id};
+
+    </select>
+
+    <update id="updateClient" parameterType="java.util.Map">
+         update oauth_client_details set client_secret = #{client_secret} ,access_token_validity=#{validity},additional_information=#{addinfo},authorized_grant_types=#{authotype},resource_ids=#{resourceid},scope=#{scope} where client_id=#{client_id};
+
+    </update>
+
+
+</mapper>

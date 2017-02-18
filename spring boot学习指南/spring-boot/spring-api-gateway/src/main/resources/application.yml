@@ -1,0 +1,22 @@
+zuul:
+  routes:
+    httpbin:
+      path: /fo/**
+      serviceId: httpbin
+    links:
+        path: /ho/**
+        url: http://www.baidu.com
+
+
+ribbon:
+  eureka:
+    enabled: false
+
+httpbin:
+  ribbon:
+    listOfServers: localhost/8082,localhost/8081
+    ServerListRefreshInterval: 15000
+    #这个list一般应该用eureka来发现,所以我们这里设置的话,就把euraka关掉
+    #接下来我们要看看如何从eureka server取到这个配置
+    #现在这里会出现forwarding error,还是不行
+    #ServerListRefreshInterval is the interval, in milliseconds, between refreshes of Ribbon’s service list.

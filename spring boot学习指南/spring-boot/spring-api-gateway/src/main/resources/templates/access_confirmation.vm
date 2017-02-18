@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>确认授权范围</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <meta content="" name="description" />
+
+    <meta content="" name="author" />
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://localhost:8081/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="http://localhost:8081/media/css/style.css " rel="stylesheet" type="text/css"/>
+
+    <link href="http://localhost:8081/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="http://localhost:8081/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="http://localhost:8081/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link href="http://localhost:8081/media/css/login.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END PAGE LEVEL STYLES -->
+
+    <link rel="shortcut icon" href="http://localhost:8081/media/image/favicon.ico" />
+</head>
+
+<body class="login" background="http://localhost:8081/media/image/bg/2.jpg">
+
+<div class="logo">
+
+    <img src="http://localhost:8081/media/image/logo-big.png" alt="" />
+
+</div>
+
+
+<div class="content">
+
+
+    <!--c:remove scope="session" var="SPRING_SECURITY_LAST_EXCEPTION" /-->
+
+
+    <form class="form-vertical login-form" id="confirmationForm" name="confirmationForm" action="/oauth/authorize" method="post">
+
+        <h5 class="form-title">确认"${client.getClientId()}"的授权范围</h5>
+
+        <div class="control-group">
+            <input name="user_oauth_approval" value="true" type="hidden" />
+        </div>
+
+        <div class="control-group">
+            <table class="table table-striped">
+                <tr>
+                    <td>范围</td>
+                    <td>准许</td>
+                    <td>禁止</td>
+                </tr>
+                #foreach(${kv} in ${scopes.entrySet()})
+                    <!--c:set var="approved">
+                    <c:if test="${scope.value}"> checked</c:if>
+                </c:set>
+                <c:set var="denied">
+                    <c:if test="${!scope.value}"> checked</c:if>
+                </c:set-->
+                    <tr>
+
+                            <td>${kv.key}:</td>
+                            <td><input class="form-control" type="radio" name="${kv.key}" value="true" ${approved}></input></td>
+                            <td><input class="form-control"  type="radio" name="${kv.key}" value="false" ${denied}></input></td>
+                    </tr>
+                #end
+            </table>
+        </div>
+
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
+
+        <div class="form-actions" align="center">
+            <input type="submit" value="确定" class="btn green pull-right">
+            <i class="m-icon-swapright m-icon-white"></i>
+        </div>
+    </form>
+
+
+
+    <div class="footer">
+        API Management System of <a
+            href="http://egoonet.com"
+            target="_blank">Egoonet</a>
+    </div>
+
+</div>
+
+</body>
+</html>

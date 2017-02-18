@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.config.AuthenticNumberMapper">
+
+    <select id="selectAll" resultType="egoo.pojo.Seats">
+        select * from zuoxi;
+    </select>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultType="egoo.pojo.Seats">
+        select * from zuoxi
+        where id=#{id};
+    </select>
+
+    <select id="selectByPhoneNumber" parameterType="egoo.pojo.Seats" resultType="egoo.pojo.Seats">
+        select * from zuoxi
+        where phoneNumber=#{phoneNumber} and id=#{id};
+    </select>
+
+    <insert id="insertSeats" parameterType="egoo.pojo.Seats" >
+        insert into zuoxi(id,phoneNumber,bussiness_group_id,password) values(#{id},#{phoneNumber},#{bussiness_group_id},#{password});
+    </insert>
+
+    <update id="updateSeats" parameterType="egoo.pojo.Seats" >
+        update zuoxi set id=#{id},phoneNumber=#{phoneNumber},bussiness_group_id=#{bussiness_group_id},password=#{password} where id=#{id};
+    </update>
+
+    <delete id="deleteSeats"  >
+        delete from zuoxi where id=#{id};
+    </delete>
+</mapper>
