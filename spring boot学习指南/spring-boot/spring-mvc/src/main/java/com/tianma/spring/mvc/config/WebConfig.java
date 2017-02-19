@@ -22,7 +22,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public DemoInterceptors demoInterceptors() {
-
         return new DemoInterceptors();
     }
 
@@ -33,9 +32,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean(name="multipartResolver")
     public MultipartResolver multipartResolver() {
         StandardServletMultipartResolver multipartResolver = new StandardServletMultipartResolver();
-        //common multipart resolver can not get multipart file ? //TODO
-//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-//        multipartResolver.setMaxUploadSize(1000000);
         return multipartResolver;
     }
 
@@ -46,7 +42,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);
-
     }
 
     /**
