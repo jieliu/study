@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egoo.domain.oauthclient.Message">
+
+    <select id="allMessageInvoke"  parameterType="java.lang.String" resultType="egoo.domain.oauthclient.Message">
+        select * from t_history_message where sender=#{name} or receiver=#{name} order by senddate DESC,sendtime DESC;
+    </select>
+
+    <insert id="insertMessage" parameterType="java.util.Map">
+        insert into t_history_message(sender, receiver, msgtype, content, senddate, sendtime) values(#{sender},#{receiver},#{msgtype},#{content},#{sendDate},#{sendTime});
+    </insert>
+
+
+</mapper>

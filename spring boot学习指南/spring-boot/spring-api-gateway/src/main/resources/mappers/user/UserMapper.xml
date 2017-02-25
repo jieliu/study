@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egoo.domain.user">
+
+    <select id="allUserInvoke" resultType="egoo.domain.user.User">
+        select * from appusers;
+    </select>
+
+    <select id="selectUserByName" parameterType="java.lang.String" resultType="egoo.domain.user.User">
+        select * from appusers where name=#{name};
+    </select>
+
+    <insert id="insertUser" parameterType="egoo.domain.user.User">
+        insert into appusers(name, password,role,status,email) values(#{name}, #{password},#{role},#{status},#{email})
+    </insert>
+
+    <update id="updateUser" parameterType="egoo.domain.user.User">
+      update appusers set password=#{password} where name=#{name}
+    </update>
+
+    <delete id="delectUserByName" parameterType="java.lang.String">
+        delete from appusers where name=#{name}
+    </delete>
+</mapper>
