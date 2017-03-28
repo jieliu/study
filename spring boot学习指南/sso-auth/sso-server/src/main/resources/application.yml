@@ -1,0 +1,47 @@
+# suppress inspection "UnusedProperty" for whole file
+########################################################
+### common setting
+########################################################
+# common
+#spring.profile.active=prod
+project.name: sso-auth
+spring.mvc.favicon.enabled: false
+
+# logging
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.mybatis: WARN
+    com.egoo: DEBUG
+  file: /${project.name}/logs/sso-server.log
+
+security:
+  oauth2:
+    client:
+      client-id: demo
+      client-secret: demo
+      scope: read, write
+      auto-approve-scopes: .*
+    authorization:
+      check-token-access: permitAll()
+server:
+  port: 9997
+  context-path: /uaa
+  tomcat.url-encoding: UTF-8
+
+
+########################################################
+### database(mysql) setting
+########################################################
+# In-memory database //used for test
+#database=hsqldb
+#spring.datasource.schema=classpath*:db/${database}/schema.sql
+#spring.datasource.data=classpath*:db/${database}/data.sql
+
+# freelink_config db
+config:
+  db:
+    url: jdbc:mysql://114.215.81.253:3306/linkcloud_console?prepStmtCacheSize=517&cachePrepStmts=true&autoReconnect=true&characterEncoding=utf-8
+    username: root
+    password: egoonetsql3466
+    maxActive: 500
