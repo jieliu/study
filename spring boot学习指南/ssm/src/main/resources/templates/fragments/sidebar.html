@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+
+        <sidebar th:fragment="sidebar">
+
+            <div class="navbar-default sidebar" role="navigation" style="margin-top: 0px;">
+                <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li class="sidebar-search">
+                                <div class="input-group custom-search-form">
+                                    <input type="text" class="form-control" placeholder="Search..." />
+                                    <span class="input-group-btn">
+                                                  <button class="btn btn-default" type="button">
+                                                      <i class="fa fa-search"></i>
+                                                  </button>
+                                          </span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a href="/index.html"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                            </li>
+
+                            <li>
+                                <a href="/common/tables.html"><i class="fa fa-table fa-fw"></i>表格</a>
+                            </li>
+
+                            <li>
+                                <a href="/common/forms.html"><i class="fa fa-edit fa-fw"></i>表单</a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>多级菜单<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="#">Second Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Second Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level <span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="#">Third Level Item</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Third Level Item</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Third Level Item</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Third Level Item</a>
+                                            </li>
+                                        </ul>
+                                        <!-- /.nav-third-level -->
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i>例子<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="/common/blank.html">空页面</a>
+                                    </li>
+                                    <li>
+                                        <a href="/user/login.html">登录页</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                        </ul>
+                    </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+
+        </sidebar>
+
+    </body>
+</html>

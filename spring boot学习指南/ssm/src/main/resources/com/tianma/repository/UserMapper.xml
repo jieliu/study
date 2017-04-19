@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tianma.repository.UserMapper">
+
+    <resultMap id="user" type="com.tianma.model.UserDo">
+        <result property="userId" column="user_id"/>
+        <result property="password" column="password"/>
+        <result property="role" column="role" />
+    </resultMap>
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="user_id">
+        INSERT INTO
+          user (user_id, password, role)
+        VALUES
+          (#{userId},#{password}, #{role})
+    </insert>
+
+    <delete id="deleteUserById">
+        DELETE FROM
+          user
+        WHERE
+          user_id = #{userId}
+    </delete>
+
+    <select id="selectUserById" resultMap="user">
+        SELECT
+          *
+        FROM
+          user
+        WHERE
+          user_id = #{userId}
+    </select>
+
+    <select id="selectUserByUsername" resultMap="user">
+        SELECT
+          *
+        FROM
+          user
+        WHERE
+          user_id = #{userId}
+    </select>
+
+    <select id="selectAllUsers" resultMap="user">
+        SELECT
+          *
+        FROM
+          user
+    </select>
+
+</mapper>
